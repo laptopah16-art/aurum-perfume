@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Admin Body - Dark Theme */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #000000;
+  color: #f5f0e8;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure all content has dark background */
+#root {
+  min-height: 100vh;
+  background: #000000;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* Background Video Container */
+.admin-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;              /* send behind everything */
+  overflow: hidden;
+}
+
+/* Video */
+.admin-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay for readability */
+.admin-video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(0,0,0,0.35); /* lighter overlay */
+  pointer-events: none;
+}
+
+/* Make admin content readable */
+.admin-content {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+}
+

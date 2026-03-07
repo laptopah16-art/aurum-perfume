@@ -1,0 +1,115 @@
+==========================================
+AURUM PERFUME WEBSITE - PRODUCT LIST
+==========================================
+
+Total Products: 8
+
+------------------------------------------
+PRODUCTS WITH ID:
+------------------------------------------
+
+ID: 1
+Name: Noir Absolu
+Brand: AURUM
+Price: $285
+Original Price: $340
+Category: luxury
+Fragrance Type: oriental
+Size: 100ml
+Rating: 4.9 (312 reviews)
+Best Seller: Yes
+
+ID: 2
+Name: Or Blanc
+Brand: AURUM
+Price: $220
+Category: women
+Fragrance Type: floral
+Size: 75ml
+Rating: 4.8 (204 reviews)
+Best Seller: Yes
+
+ID: 3
+Name: Aqua Regale
+Brand: AURUM
+Price: $175
+Category: women
+Fragrance Type: fresh
+Size: 100ml
+Rating: 4.7 (189 reviews)
+Best Seller: No
+
+ID: 4
+Name: Obsidian
+Brand: AURUM
+Price: $260
+Category: men
+Fragrance Type: woody
+Size: 100ml
+Rating: 4.9 (267 reviews)
+Best Seller: Yes
+
+ID: 5
+Name: Lumière Éternelle
+Brand: AURUM
+Price: $195
+Category: luxury
+Fragrance Type: floral
+Size: 50ml
+Rating: 4.8 (156 reviews)
+New Arrival: Yes
+
+ID: 6
+Name: Ambre Mystique
+Brand: AURUM
+Price: $310
+Category: luxury
+Fragrance Type: oriental
+Size: 100ml
+Rating: 5.0 (98 reviews)
+New Arrival: Yes
+
+ID: 7
+Name: Rosé Imperial
+Brand: AURUM
+Price: $240
+Category: women
+Fragrance Type: floral
+Size: 75ml
+Rating: 4.7 (143 reviews)
+New Arrival: Yes
+
+ID: 8
+Name: Oud Sauvage
+Brand: AURUM
+Price: $350
+Category: men
+Fragrance Type: woody
+Size: 100ml
+Rating: 4.9 (211 reviews)
+Best Seller: Yes
+
+==========================================
+CATEGORY BREAKDOWN:
+==========================================
+Luxury: 3 products (ID: 1, 5, 6)
+Women: 3 products (ID: 2, 3, 7)
+Men: 2 products (ID: 4, 8)
+
+==========================================
+BEST SELLERS:
+==========================================
+1. Noir Absolu (ID: 1)
+2. Or Blanc (ID: 2)
+3. Obsidian (ID: 4)
+4. Oud Sauvage (ID: 8)
+
+==========================================
+NEW ARRIVALS:
+==========================================
+1. Lumière Éternelle (ID: 5)
+2. Ambre Mystique (ID: 6)
+3. Rosé Imperial (ID: 7)
+
+==========================================
+

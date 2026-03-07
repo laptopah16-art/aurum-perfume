@@ -1,0 +1,245 @@
+================================================================================
+                           PROJECT DOCUMENTATION
+================================================================================
+
+PROJECT NAME: AURUM - Luxury Perfume E-Commerce Website
+PROJECT TYPE: Single Page Application (SPA) / E-Commerce Website
+TECH STACK: React, React Router, Tailwind CSS, Framer Motion, Vite
+BRAND: AURUM - Maison de Parfumerie (Est. 1924)
+
+================================================================================
+                            PROJECT OVERVIEW
+================================================================================
+
+AURUM is a luxury perfume e-commerce website that offers a premium shopping 
+experience for high-end fragrances. The brand represents elegance, exclusivity, 
+and timeless beauty in the world of perfumery.
+
+KEY BRAND ELEMENTS:
+- Brand Name: AURUM (Latin for "Gold")
+- Tagline: "Discover Your Signature Scent"
+- Aesthetic: Luxury, dark, elegant with gold accents (#c9a45c)
+- Typography: Playfair Display (serif headings), Cormorant Garamond (body)
+- Color Palette: Dark backgrounds (#080608, #110f14, #0d0b0f), Gold accents (#c9a45c)
+
+================================================================================
+                           FUNCTIONALITY
+================================================================================
+
+1. HOME PAGE
+   - Full-screen video hero section with brand introduction
+   - Featured fragrances section (4 products grid)
+   - Best sellers carousel with auto-rotation and manual navigation
+   - Category browsing (Men, Women, Luxury, New Arrivals)
+   - Cinematic video section showcasing the craft
+   - New arrivals section
+   - Customer testimonials with auto-rotation
+   - Newsletter subscription for exclusive offers
+   - Smooth scroll animations using Framer Motion
+
+2. PRODUCT LISTING PAGE (/products)
+   - Grid display of all perfume products
+   - Category filtering (Men, Women, Luxury)
+   - Product cards showing:
+     * Product image with hover effects
+     * Brand name (AURUM)
+     * Product name
+     * Size and fragrance type
+     * Price (with original price for sale items)
+     * Badges (Best Seller, New, Sale)
+     * Quick add to cart functionality
+
+3. PRODUCT DETAIL PAGE (/product/:id)
+   - Full product information display
+   - Product images/videos gallery
+   - Complete fragrance notes breakdown:
+     * Top notes
+     * Middle/Heart notes
+     * Base notes
+   - Size selection
+   - Quantity selector
+   - Add to cart functionality
+   - Rating and reviews display
+   - Related products suggestions
+
+4. SHOPPING CART (/cart)
+   - Cart items display with images
+   - Quantity adjustment (increase/decrease)
+   - Remove item functionality
+   - Size selection per item
+   - Subtotal calculation
+   - Coupon code application
+   - Discount support
+   - Total calculation
+   - Proceed to checkout button
+
+5. CHECKOUT PAGE (/checkout)
+   - Shipping information form
+   - Order summary
+   - Continue to payment button
+
+6. PAYMENT PAGE (/payment)
+   - Payment form interface
+   - Order review
+   - Place order functionality
+
+7. ORDER CONFIRMATION (/order-confirmation)
+   - Success message
+   - Order details summary
+   - Continue shopping option
+
+8. USER AUTHENTICATION (/login)
+   - Login/Signup form
+   - User authentication interface
+
+9. CONTACT PAGE (/contact)
+   - Contact form
+   - Company information
+
+10. ABOUT US PAGE (/about)
+    - Brand story
+    - Company history
+    - Craftsmanship details
+
+================================================================================
+                           PRODUCT CATALOG
+================================================================================
+
+CURRENT PRODUCTS (8 Luxury Fragrances):
+
+1. Noir Absolu (Men/Luxury) - $285
+   - Oriental fragrance
+   - Notes: Black Pepper, Saffron, Bergamot / Oud, Rose, Jasmine / Amber, Sandalwood, Musk, Vanilla
+   - Best Seller
+
+2. Or Blanc (Women) - $220
+   - Floral fragrance
+   - Notes: Bergamot, Peach Nectar, Pink Pepper / Peony, Gardenia, Ylang-Ylang / Cashmere Wood, White Musk, Sandalwood
+   - Best Seller
+
+3. Aqua Regale (Women) - $175
+   - Fresh fragrance
+   - Notes: Sea Spray, Mandarin, Bergamot / White Iris, Jasmine, Lily / Cedarwood, Vetiver, Musk
+
+4. Obsidian (Men) - $260
+   - Woody fragrance
+   - Notes: Black Pepper, Coriander, Vetiver / Dark Leather, Smoked Cedar, Incense / Labdanum, Benzoin, Oakmoss, Amber
+   - Best Seller
+
+5. Lumière Éternelle (Luxury) - $195
+   - Floral fragrance
+   - Notes: Bergamot, Violet Leaf, Neroli / Bulgarian Rose, Iris, Magnolia / Blonde Wood, White Musk, Benzoin
+   - New Arrival
+
+6. Ambre Mystique (Luxury) - $310
+   - Oriental fragrance
+   - Notes: Cardamom, Cinnamon, Pink Pepper / Rose, Oud, Patchouli / Ambergris, Benzoin, Vanilla, Tonka Bean
+   - New Arrival
+
+7. Rosé Imperial (Women) - $240
+   - Floral fragrance
+   - Notes: Saffron, Bergamot, Grapefruit / Damask Rose, Turkish Rose, Geranium / Amber, Oud, Patchouli, Sandalwood
+   - New Arrival
+
+8. Oud Sauvage (Men) - $350
+   - Woody fragrance
+   - Notes: Bergamot, Geranium, Cypriol / Cambodian Oud, Rose, Leather / Sandalwood, Vetiver, Ambergris, Musk
+   - Best Seller
+
+================================================================================
+                           TECHNICAL FEATURES
+================================================================================
+
+1. STATE MANAGEMENT:
+   - React Context API for cart management
+   - CartContext for global cart state
+   - Reducer pattern for cart operations
+
+2. ROUTING:
+   - React Router v6+ for client-side routing
+   - Nested routes with shared Layout component
+
+3. ANIMATIONS:
+   - Framer Motion for complex animations
+   - Scroll-triggered animations
+   - Hover effects on products
+   - Page transitions
+
+4. STYLING:
+   - Tailwind CSS for utility classes
+   - Custom CSS for specific styling
+   - Responsive design (mobile, tablet, desktop)
+
+5. MEDIA:
+   - Background videos on multiple sections
+   - Product videos for certain fragrances
+   - High-quality Unsplash images
+
+6. CART FUNCTIONALITY:
+   - Add items to cart
+   - Remove items from cart
+   - Update quantity
+   - Apply coupon codes
+   - Calculate discounts
+   - Calculate totals (subtotal, total)
+
+================================================================================
+                           FILE STRUCTURE
+================================================================================
+
+src/
+├── app/
+│   ├── components/
+│   │   ├── Layout.jsx           # Main layout with header/footer
+│   │   ├── BackgroundVideo.jsx  # Video background component
+│   │   └── ui/                  # UI components (shadcn/ui)
+│   ├── context/
+│   │   └── CartContext.jsx      # Cart state management
+│   ├── data/
+│   │   └── products.js          # Product catalog data
+│   ├── pages/
+│   │   ├── Home.jsx             # Homepage
+│   │   ├── ProductListing.jsx   # Products grid page
+│   │   ├── ProductDetail.jsx    # Single product page
+│   │   ├── Cart.jsx             # Shopping cart
+│   │   ├── Checkout.jsx          # Checkout process
+│   │   ├── Payment.jsx          # Payment page
+│   │   ├── LoginSignup.jsx      # Authentication
+│   │   ├── OrderConfirmation.jsx # Order success
+│   │   ├── Contact.jsx          # Contact page
+│   │   └── AboutUs.jsx          # About page
+│   ├── App.jsx                  # Root component
+│   ├── Root.jsx                 # Root layout
+│   └── routes.js                 # Route definitions
+├── assets/                      # Video files
+└── styles/                      # CSS files
+
+================================================================================
+                           HOW TO RUN
+================================================================================
+
+1. Install dependencies:
+   npm install
+
+2. Start development server:
+   npm run dev
+
+3. Build for production:
+   npm run build
+
+================================================================================
+                           DESIGN HIGHLIGHTS
+================================================================================
+
+- Dark luxury aesthetic with gold (#c9a45c) accents
+- Elegant serif typography (Playfair Display)
+- High-quality video backgrounds
+- Smooth animations and transitions
+- Responsive design for all devices
+- Premium shopping experience
+- Best seller and new arrival badges
+- Customer reviews and ratings
+- Newsletter subscription for engagement
+
+================================================================================
+
