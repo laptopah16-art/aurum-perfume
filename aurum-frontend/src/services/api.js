@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// ✅ Production API URL (from Vercel env)
+const API_URL = import.meta.env.VITE_API_URL;
+
+// 🚨 Safety check (optional but helpful)
+if (!API_URL) {
+  console.error("❌ VITE_API_URL is not defined in environment variables");
+}
 
 // Create axios instance
 const api = axios.create({
@@ -14,15 +20,14 @@ const api = axios.create({
 const initAxiosDefaults = () => {
   const token = localStorage.getItem('aurumToken');
   if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
 };
 
-// Call on module load
+// Call on load
 initAxiosDefaults();
 
-// Request interceptor - add auth token
+// Request interceptor - attach token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('aurumToken');
@@ -31,21 +36,18 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor - handle errors
+// Response interceptor - handle auth errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token expired or invalid
       localStorage.removeItem('aurumToken');
       localStorage.removeItem('aurumUser');
-      delete axios.defaults.headers.common['Authorization'];
-      // Optionally redirect to login
+
+      // Redirect to login
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
       }
@@ -54,16 +56,14 @@ api.interceptors.response.use(
   }
 );
 
-// Product APIs
+
+// =======================
+// ✅ PRODUCT APIs
+// =======================
 export const productAPI = {
   getAll: async (params) => {
     const response = await api.get('/products', { params });
-    // Handle response format: { success, count, data: [...] }
-    const data = response.data;
-    if (data.success && data.data) {
-      return data;
-    }
-    return data;
+    return response.data;
   },
   getById: (id) => api.get(`/products/${id}`),
   getBestSellers: () => api.get('/products/best-sellers'),
@@ -73,7 +73,10 @@ export const productAPI = {
   getByCategory: (category) => api.get(`/products/category/${category}`),
 };
 
-// User APIs
+
+// =======================
+// ✅ USER APIs
+// =======================
 export const userAPI = {
   register: (data) => api.post('/users/register', data),
   login: (data) => api.post('/users/login', data),
@@ -83,7 +86,10 @@ export const userAPI = {
   changePassword: (data) => api.put('/users/change-password', data),
 };
 
-// Order APIs
+
+// =======================
+// ✅ ORDER APIs
+// =======================
 export const orderAPI = {
   create: (data) => api.post('/orders', data),
   getMyOrders: () => api.get('/orders/my-orders'),
@@ -92,17 +98,22 @@ export const orderAPI = {
   updatePayment: (id, data) => api.put(`/orders/${id}/pay`, data),
 };
 
-// Payment APIs
+
+// =======================
+// ✅ PAYMENT APIs
+// =======================
 export const paymentAPI = {
   createOrder: (data) => api.post('/payment/create-order', data),
   verifyPayment: (data) => api.post('/payment/verify', data),
   getKey: () => api.get('/payment/key'),
 };
 
-// Contact APIs
+
+// =======================
+// ✅ CONTACT APIs
+// =======================
 export const contactAPI = {
   submit: (data) => api.post('/contact', data),
 };
 
 export default api;
-
