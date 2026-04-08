@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-// ✅ Production API URL (from Vercel env)
+// ✅ API URL (Vercel env)
 const API_URL = import.meta.env.VITE_API_URL;
 
-// 🚨 Safety check (optional but helpful)
+// 🚨 Fail fast if env missing
 if (!API_URL) {
-  console.error("❌ VITE_API_URL is not defined in environment variables");
+  throw new Error("❌ VITE_API_URL is not defined. Set it in Vercel environment variables.");
 }
 
 // Create axios instance
@@ -14,23 +14,20 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true, // ✅ important for auth/cookies
 });
 
-// Initialize axios defaults with token if exists
-const initAxiosDefaults = () => {
-  const token = localStorage.getItem('aurumToken');
-  if (token) {
-    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  }
-};
+// =======================
+// ✅ Attach token helper
+// =======================
+const getToken = () => localStorage.getItem('aurumToken');
 
-// Call on load
-initAxiosDefaults();
-
-// Request interceptor - attach token
+// =======================
+// ✅ Request interceptor
+// =======================
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('aurumToken');
+    const token = getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -39,7 +36,9 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response interceptor - handle auth errors
+// =======================
+// ✅ Response interceptor
+// =======================
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -47,23 +46,25 @@ api.interceptors.response.use(
       localStorage.removeItem('aurumToken');
       localStorage.removeItem('aurumUser');
 
-      // Redirect to login
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
       }
     }
+
+    // Better debugging
+    console.error("API Error:", error.response || error.message);
+
     return Promise.reject(error);
   }
 );
-
 
 // =======================
 // ✅ PRODUCT APIs
 // =======================
 export const productAPI = {
   getAll: async (params) => {
-    const response = await api.get('/products', { params });
-    return response.data;
+    const res = await api.get('/products', { params });
+    return res.data;
   },
   getById: (id) => api.get(`/products/${id}`),
   getBestSellers: () => api.get('/products/best-sellers'),
@@ -72,7 +73,6 @@ export const productAPI = {
   getCategories: () => api.get('/products/categories'),
   getByCategory: (category) => api.get(`/products/category/${category}`),
 };
-
 
 // =======================
 // ✅ USER APIs
@@ -86,7 +86,6 @@ export const userAPI = {
   changePassword: (data) => api.put('/users/change-password', data),
 };
 
-
 // =======================
 // ✅ ORDER APIs
 // =======================
@@ -98,7 +97,6 @@ export const orderAPI = {
   updatePayment: (id, data) => api.put(`/orders/${id}/pay`, data),
 };
 
-
 // =======================
 // ✅ PAYMENT APIs
 // =======================
@@ -107,7 +105,6 @@ export const paymentAPI = {
   verifyPayment: (data) => api.post('/payment/verify', data),
   getKey: () => api.get('/payment/key'),
 };
-
 
 // =======================
 // ✅ CONTACT APIs
