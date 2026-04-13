@@ -43,7 +43,7 @@ const Login = () => {
       
       // Provide more helpful error messages
       if (err.message.includes('Network') || err.code === 'ERR_NETWORK') {
-        setError('Unable to connect to server. Please ensure the backend is running on port 5000.');
+        setError('Unable to connect to server. Please check your internet connection.');
       } else if (err.message.includes('401') || err.message.includes('Invalid') || err.message.includes('credentials')) {
         setError('Invalid email or password. Please check your credentials.');
       } else if (err.message.includes('Admin access only')) {
@@ -108,6 +108,7 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              autoComplete="current-password"
               className="w-full px-4 py-2 bg-gray-900 border border-yellow-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-300 placeholder-gray-500"
               placeholder="Enter your password"
             />
