@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration - Allow frontend (ports 5173-5177) and admin panel
+// CORS configuration - Allow frontend (ports 5173-5177), admin panel, and Vercel production
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -29,7 +29,9 @@ app.use(cors({
     'http://127.0.0.1:5175',
     'http://127.0.0.1:5175',
     'http://127.0.0.1:5176',
-    'http://127.0.0.1:5177'
+    'http://127.0.0.1:5177',
+    'https://aurum-perfume.vercel.app',
+    'https://aurum-perfume-16.onrender.com'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -77,16 +79,21 @@ app.get('/', (req, res) => {
   });
 });
 
-// Start server function
+// Start server function - Updated for demo mode
 const startServer = async () => {
   try {
-    // Connect to MongoDB first - wait for connection before starting server
+    // Connect to MongoDB - optional for demo mode
     console.log('========================================');
     console.log('Starting AURUM Backend Server...');
     console.log('========================================');
 
-    await connectDB();
-    console.log('✓ Database connection established');
+    try {
+      await connectDB();
+      console.log('✓ Database connection established');
+    } catch (error) {
+      console.log('⚠️  MongoDB connection failed - running in demo mode');
+      console.log('⚠️  Database features will be limited');
+    }
     
     // Mount routes
     app.use('/api/products', productRoutes);
@@ -325,3 +332,29 @@ startServer();
 
 module.exports = app;
 
+
+// Restart trigger
+
+// Updated credentials
+
+// Local MongoDB restart
+
+// MongoDB Atlas restart
+
+// Atlas connection ready
+
+// New MongoDB credentials restart
+
+// Trying with IP 110.227.19.192/32
+
+// Final MongoDB connection with correct password
+
+// New cluster connection: cluster0.fpdco99.mongodb.net
+
+// Exact MongoDB connection string restart
+
+// MongoDB Atlas cloud connection restart
+
+// New MongoDB credentials: Anand_1035
+
+// Direct shard connection restart
