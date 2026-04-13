@@ -93,6 +93,7 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              autoComplete="username"
               className="w-full px-4 py-2 bg-gray-900 border border-yellow-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-300 placeholder-gray-500"
               placeholder="admin@aurum.com"
             />
