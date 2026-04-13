@@ -61,15 +61,9 @@ const productSchema = new mongoose.Schema({
   images: [{
     type: String,
   }],
-  // Support both stock and countInStock for compatibility
-  stock: {
-    type: Number,
-    default: 0,
-    min: [0, 'Stock cannot be negative'],
-  },
   countInStock: {
     type: Number,
-    default: 0,
+    default: 50,
     min: [0, 'Stock cannot be negative'],
   },
   rating: {
@@ -82,17 +76,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  // Support both bestSeller naming conventions
-  bestSeller: {
-    type: Boolean,
-    default: false,
-  },
   isBestSeller: {
-    type: Boolean,
-    default: false,
-  },
-  // Support both newArrival naming conventions
-  newArrival: {
     type: Boolean,
     default: false,
   },
@@ -112,27 +96,7 @@ const productSchema = new mongoose.Schema({
   timestamps: true,
 });
 
-// Virtual for getting stock value (supports both naming conventions)
-productSchema.virtual('stockCount').get(function() {
-  return this.stock || this.countInStock || 0;
-});
-
-// Virtual for checking if product is bestseller
-productSchema.virtual('isBestSellerFlag').get(function() {
-  return this.bestSeller || this.isBestSeller || false;
-});
-
-// Virtual for checking if product is new arrival
-productSchema.virtual('isNewArrivalFlag').get(function() {
-  return this.newArrival || this.isNewArrival || false;
-});
-
-// Ensure virtuals are included in JSON
-productSchema.set('toJSON', { virtuals: true });
-productSchema.set('toObject', { virtuals: true });
-
 // Index for searching
 productSchema.index({ name: 'text', description: 'text', brand: 'text' });
 
 module.exports = mongoose.model('Product', productSchema);
-
