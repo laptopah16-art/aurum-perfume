@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // ✅ API URL (Vercel env)
-const API_URL = import.meta.env.VITE_API_URL;
 
+const API_URL = import.meta.env.VITE_API_URL || "https://aurum-perfume-16.onrender.com/";
 // 🚨 Fail fast if env missing
 if (!API_URL) {
   throw new Error("❌ VITE_API_URL is not defined. Set it in Vercel environment variables.");
