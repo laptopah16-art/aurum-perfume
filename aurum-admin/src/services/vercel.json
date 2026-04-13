@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "aurum-admin",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://aurum-perfume-16.onrender.com/api"
+  },
+  "build": {
+    "env": {
+      "VITE_API_URL": "https://aurum-perfume-16.onrender.com/api"
+    }
+  }
+}
