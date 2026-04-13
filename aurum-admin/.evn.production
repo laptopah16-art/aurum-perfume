@@ -1,0 +1,12 @@
+# Production Environment Variables Template
+# Copy this file to .env and fill in your values
+
+# API URL
+VITE_API_URL=https://aurum-perfume-16.onrender.com/api
+
+# App Configuration
+VITE_APP_NAME=AURUM Admin
+VITE_APP_VERSION=1.0.0
+
+# Optional: Analytics
+VITE_GA_TRACKING_ID=your_google_analytics_id
