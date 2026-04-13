@@ -133,6 +133,20 @@ const products = [
     countInStock: 35,
     image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800',
   },
+  {
+    name: 'Velvet Orchid',
+    brand: 'AURUM',
+    price: 295,
+    category: 'luxury',
+    fragranceType: 'floral',
+    size: '90ml',
+    description: 'A velvety orchid fragrance with black orchid, dark chocolate, and patchouli. Seductive and mysterious.',
+    rating: 4.9,
+    reviews: 187,
+    isBestSeller: true,
+    countInStock: 42,
+    image: 'https://images.unsplash.com/photo-1582780354214-a348d11e0d7f?w=800',
+  },
 ];
 
 // Seed products function
@@ -147,7 +161,7 @@ const seedProducts = async () => {
     // Insert products
     await Product.insertMany(products);
 
-    console.log('8 products inserted successfully');
+    console.log('9 products inserted successfully');
 
     await mongoose.connection.close();
     console.log('Database connection closed.');
