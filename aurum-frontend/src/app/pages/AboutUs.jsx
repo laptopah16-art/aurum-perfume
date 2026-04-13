@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
 // Import all videos from src/assets folder using Vite's glob import
-const videoFiles = import.meta.glob('../../assets/*.mp4', { eager: true });
+const videoFiles = import.meta.glob('aurum-frontend/src/assets/v11.mp4', { eager: true });
 const allVideos = Object.values(videoFiles).map((module) => module.default);
 
 // Get a random video for the hero section
