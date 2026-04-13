@@ -20,7 +20,7 @@ export default function ProductListing() {
   const initialCategory = searchParams.get('category') || '';
   const [selectedCategories, setSelectedCategories] = useState(initialCategory ? [initialCategory] : []);
   const [selectedFragrances, setSelectedFragrances] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, 500]);
+  const [priceRange, setPriceRange] = useState([0, 5000]);
   const [sortBy, setSortBy] = useState('featured');
   const [filterOpen, setFilterOpen] = useState(false);
   const [addedId, setAddedId] = useState(null);
@@ -85,6 +85,9 @@ export default function ProductListing() {
       image: product.image,
       size: product.size,
       fragranceType: product.fragranceType,
+      countInStock: product.countInStock,
+      stockCount: product.stockCount,
+      stock: product.stock,
     };
     addItem(cartProduct);
     setAddedId(product._id);
@@ -94,10 +97,10 @@ export default function ProductListing() {
   const clearFilters = () => {
     setSelectedCategories([]);
     setSelectedFragrances([]);
-    setPriceRange([0, 500]);
+    setPriceRange([0, 5000]);
   };
 
-  const hasFilters = selectedCategories.length > 0 || selectedFragrances.length > 0 || priceRange[0] > 0 || priceRange[1] < 500;
+  const hasFilters = selectedCategories.length > 0 || selectedFragrances.length > 0 || priceRange[0] > 0 || priceRange[1] < 5000;
 
   if (loading) {
     return (
@@ -321,13 +324,13 @@ export default function ProductListing() {
                   </h4>
                   <div className="flex flex-col gap-3">
                     <input
-                      type="range" min={0} max={500} step={10}
+                      type="range" min={0} max={5000} step={50}
                       value={priceRange[0]}
                       onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
                       className="w-full accent-amber-500"
                     />
                     <input
-                      type="range" min={0} max={500} step={10}
+                      type="range" min={0} max={5000} step={50}
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
                       className="w-full accent-amber-500"
