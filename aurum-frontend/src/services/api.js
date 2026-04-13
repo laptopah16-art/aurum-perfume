@@ -1,24 +1,24 @@
 import axios from 'axios';
 
-// ✅ API URL (Vercel env)
+// ✅ Correct API URL (NO trailing slash)
+const API_URL = import.meta.env.VITE_API_URL || "https://aurum-perfume-16.onrender.com";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://aurum-perfume-16.onrender.com/";
-// 🚨 Fail fast if env missing
+// 🚨 Optional check (safe)
 if (!API_URL) {
-  throw new Error("❌ VITE_API_URL is not defined. Set it in Vercel environment variables.");
+  console.warn("VITE_API_URL not found, using fallback");
 }
 
 // Create axios instance
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: `${API_URL}/api`, // ✅ IMPORTANT FIX
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // ✅ important for auth/cookies
+  withCredentials: true,
 });
 
 // =======================
-// ✅ Attach token helper
+// ✅ Token helper
 // =======================
 const getToken = () => localStorage.getItem('aurumToken');
 
@@ -42,6 +42,8 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.error("API Error:", error.response || error.message);
+
     if (error.response?.status === 401) {
       localStorage.removeItem('aurumToken');
       localStorage.removeItem('aurumUser');
@@ -51,9 +53,6 @@ api.interceptors.response.use(
       }
     }
 
-    // Better debugging
-    console.error("API Error:", error.response || error.message);
-
     return Promise.reject(error);
   }
 );
@@ -62,10 +61,7 @@ api.interceptors.response.use(
 // ✅ PRODUCT APIs
 // =======================
 export const productAPI = {
-  getAll: async (params) => {
-    const res = await api.get('/products', { params });
-    return res.data;
-  },
+  getAll: (params) => api.get('/products', { params }), // ✅ now correct
   getById: (id) => api.get(`/products/${id}`),
   getBestSellers: () => api.get('/products/best-sellers'),
   getNewArrivals: () => api.get('/products/new-arrivals'),
