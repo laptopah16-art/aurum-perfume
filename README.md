@@ -1,151 +1,108 @@
-# AURUM Perfume E-Commerce Project
+# 🌟 AURUM Perfume – Luxury E-Commerce Platform
 
-A luxury perfume e-commerce platform built with React, Vite, Node.js, Express, and MongoDB.
+A full-stack luxury perfume e-commerce application built using **React, Vite, Node.js, Express, and MongoDB**.
 
-## Project Structure
+---
+
+## 🚀 Live Overview
+
+* 🛍️ Frontend → http://localhost:5173
+* 🛠️ Admin Panel → http://localhost:5174
+* 🔗 Backend API → http://localhost:5000
+
+---
+
+## 📁 Project Structure
 
 ```
 aurum-perfume/
-├── aurum-frontend/    # Customer-facing e-commerce site (React + Vite) - Port 5173
-├── aurum-admin/       # Admin dashboard (React + Vite) - Port 5174
-└── aurum-backend/    # Express.js API server (Node.js) - Port 5000
+├── aurum-frontend/   # Customer-facing app (React + Vite)
+├── aurum-admin/      # Admin dashboard (React + Vite)
+└── aurum-backend/    # Backend API (Node.js + Express)
 ```
 
-## ⚠️ IMPORTANT: Prerequisites
+---
 
-You MUST have the following installed and running:
+## ⚙️ Prerequisites
 
-1. **Node.js 18+** - https://nodejs.org/
-2. **MongoDB** - Must be running on port 27017
-   - Windows: Install MongoDB Community Server or use MongoDB Atlas
-   - macOS: `brew install mongodb-community` then `brew services start mongodb-community`
-   - Or use MongoDB Atlas (cloud) - update .env with your connection string
+Make sure you have installed:
 
-## Quick Start
+* Node.js (v18+)
+* MongoDB (Local or Atlas)
 
-### Step 1: Start MongoDB (REQUIRED)
+### MongoDB Setup
 
-**Option A: Local MongoDB**
+**Option 1: Local**
+
 ```bash
-# Make sure MongoDB service is running
-# Windows: Start MongoDB service
-# macOS: brew services start mongodb-community
-# Linux: sudo systemctl start mongod
+# macOS
+brew services start mongodb-community
+
+# Linux
+sudo systemctl start mongod
 ```
 
-**Option B: MongoDB Atlas (Cloud)**
-1. Create a free account at https://www.mongodb.com/atlas
-2. Create a free cluster
-3. Get your connection string
-4. Update `.env` in aurum-backend:
-```
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/aurum_perfume
-```
+**Option 2: MongoDB Atlas**
 
-### Step 2: Seed Admin User
+1. Create account → https://www.mongodb.com/atlas
+2. Create cluster
+3. Replace connection string in `.env`
+
+---
+
+## ⚡ Quick Start
+
+### 1️⃣ Backend Setup
 
 ```bash
 cd aurum-backend
+npm install
 npm run seed
-```
-
-This creates:
-- **Email**: admin@aurum.com
-- **Password**: admin123
-
-### Step 3: Start Backend
-
-```bash
-cd aurum-backend
 npm run dev
 ```
 
-The backend will run on `http://localhost:5000`
+Backend runs on → http://localhost:5000
 
-### Step 4: Start Frontend
+---
+
+### 2️⃣ Frontend Setup
 
 ```bash
 cd aurum-frontend
+npm install
 npm run dev
 ```
 
-The frontend will run on `http://localhost:5173`
+Frontend runs on → http://localhost:5173
 
-### Step 5: Start Admin Dashboard
+---
+
+### 3️⃣ Admin Setup
 
 ```bash
 cd aurum-admin
+npm install
 npm run dev
 ```
 
-The admin panel will run on `http://localhost:5174`
+Admin panel runs on → http://localhost:5174
 
-## Troubleshooting
+---
 
-### ❌ "MongoDB connection refused" error
+## 🔐 Admin Credentials
 
-**Cause**: MongoDB is not running
-
-**Solution**:
-1. Start MongoDB service on your machine, OR
-2. Use MongoDB Atlas (cloud) and update .env
-
-### ❌ Products not showing on homepage
-
-**Cause**: Products not seeded
-
-**Solution**: 
-- Backend auto-seeds 8 products on first run when MongoDB is connected
-- Or run: `cd aurum-backend && npm run seed-products`
-
-### ❌ Admin login fails
-
-**Cause**: Admin user not created
-
-**Solution**: 
-```bash
-cd aurum-backend
-npm run seed
+```
+Email: admin@aurum.com
+Password: admin123
 ```
 
-### ❌ Network errors in console
+---
 
-**Cause**: Backend not running or wrong port
+## 🌐 Environment Variables
 
-**Solution**:
-1. Make sure backend is running on port 5000
-2. Check CORS settings in backend server.js
+### Backend (`aurum-backend/.env`)
 
-## API Endpoints
-
-### Products
-- `GET /api/products` - Get all products (public)
-- `GET /api/products/:id` - Get single product (public)
-- `GET /api/products/categories` - Get categories
-- `GET /api/products/best-sellers` - Get best sellers
-- `GET /api/products/new-arrivals` - Get new arrivals
-- `POST /api/products` - Create product (admin)
-- `PUT /api/products/:id` - Update product (admin)
-- `DELETE /api/products/:id` - Delete product (admin)
-
-### Users
-- `POST /api/users/register` - Register user
-- `POST /api/users/login` - Login user
-- `POST /api/users/google` - Google login
-- `GET /api/users/profile` - Get profile
-
-### Contact
-- `POST /api/contact` - Submit contact form (public)
-- `GET /api/contact` - Get all messages (admin only)
-
-### Orders
-- `POST /api/orders` - Create order
-- `GET /api/orders/my-orders` - Get user orders
-
-## Environment Variables
-
-### Backend (aurum-backend/.env)
-```
+```env
 MONGODB_URI=mongodb://localhost:27017/aurum_perfume
 PORT=5000
 NODE_ENV=development
@@ -153,62 +110,142 @@ JWT_SECRET=your_secret_key_here
 FRONTEND_URL=http://localhost:5173
 ```
 
-### Frontend (aurum-frontend/.env)
-```
+### Frontend (`aurum-frontend/.env`)
+
+```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-## Features
+---
 
-### Frontend (http://localhost:5173)
-- ✅ Home page with exactly 8 products displayed
-- ✅ Product listing with filters
-- ✅ Product detail page
-- ✅ Shopping cart
-- ✅ User authentication (login/signup with Google)
-- ✅ Contact form
+## ✨ Features
 
-### Admin Dashboard (http://localhost:5174)
-- ✅ Admin login (admin@aurum.com / admin123)
-- ✅ Dashboard with overview
-- ✅ Product management (CRUD)
-- ✅ Contact messages viewing
-- ✅ Protected routes
+### 🛍️ User Features
 
-## Code Overview
+* Product listing & filtering
+* Product detail page
+* Shopping cart
+* User authentication (JWT + Google)
+* Contact form
 
-### Home Page - Displaying 8 Products
-The Home page displays exactly 8 products in two sections:
-- Featured Fragrances: products.slice(0, 4)
-- New Arrivals: products.slice(4, 8)
+### 🛠️ Admin Features
 
-Total: 8 products displayed on homepage.
+* Admin dashboard
+* Product CRUD operations
+* Contact message management
+* Protected routes
 
-### Product API Response Format
-```json
-{
-  "success": true,
-  "count": 8,
-  "totalPages": 1,
-  "currentPage": 1,
-  "data": [
-    {
-      "_id": "...",
-      "name": "Noir Absolu",
-      "brand": "AURUM",
-      "price": 285,
-      "image": "https://...",
-      "isBestSeller": true,
-      "isNewArrival": false
-    }
-  ]
-}
+---
+
+## 📦 API Endpoints
+
+### Products
+
+```
+GET    /api/products
+GET    /api/products/:id
+POST   /api/products        (Admin)
+PUT    /api/products/:id    (Admin)
+DELETE /api/products/:id    (Admin)
 ```
 
-## Tech Stack
+### Users
 
-- **Frontend**: React 18, Vite, Tailwind CSS, React Router, Framer Motion
-- **Admin**: React 18, Vite, Tailwind CSS
-- **Backend**: Node.js, Express, MongoDB, Mongoose
-- **Authentication**: JWT, bcrypt
+```
+POST /api/users/register
+POST /api/users/login
+POST /api/users/google
+GET  /api/users/profile
+```
 
+### Orders
+
+```
+POST /api/orders
+GET  /api/orders/my-orders
+```
+
+### Contact
+
+```
+POST /api/contact
+GET  /api/contact (Admin)
+```
+
+---
+
+## 🧠 Key Logic
+
+Homepage displays exactly **8 products**:
+
+```js
+products.slice(0, 4)  // Featured
+products.slice(4, 8)  // New Arrivals
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### MongoDB not connecting
+
+* Start MongoDB OR use Atlas
+
+### Products not showing
+
+```bash
+npm run seed-products
+```
+
+### Admin login failed
+
+```bash
+npm run seed
+```
+
+### Network errors
+
+* Ensure backend is running on port 5000
+* Check API URL in `.env`
+
+---
+
+## 🧱 Tech Stack
+
+### Frontend
+
+* React 18
+* Vite
+* Tailwind CSS
+* React Router
+* Framer Motion
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB + Mongoose
+
+### Authentication
+
+* JWT
+* bcrypt
+
+---
+
+## 📌 Future Improvements
+
+* Payment integration (Stripe/Razorpay)
+* Mobile responsiveness
+* Product reviews & ratings
+* Order tracking system
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+* ⭐ Star the repo
+* 🍴 Fork it
+* 📢 Share it
