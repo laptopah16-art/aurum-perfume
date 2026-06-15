@@ -23,34 +23,8 @@ aurum-perfume/
 
 ---
 
-## ⚙️ Prerequisites
 
-Make sure you have installed:
 
-* Node.js (v18+)
-* MongoDB (Local or Atlas)
-
-### MongoDB Setup
-
-**Option 1: Local**
-
-```bash
-# macOS
-brew services start mongodb-community
-
-# Linux
-sudo systemctl start mongod
-```
-
-**Option 2: MongoDB Atlas**
-
-1. Create account → https://www.mongodb.com/atlas
-2. Create cluster
-3. Replace connection string in `.env`
-
----
-
-## ⚡ Quick Start
 
 ### 1️⃣ Backend Setup
 
@@ -100,23 +74,21 @@ Password: admin123
 
 ## 🌐 Environment Variables
 
-### Backend (`aurum-backend/.env`)
+Screenshots
 
-```env
-MONGODB_URI=mongodb://localhost:27017/aurum_perfume
-PORT=5000
-NODE_ENV=development
-JWT_SECRET=your_secret_key_here
-FRONTEND_URL=http://localhost:5173
-```
+HOME PAGE
+<img width="1366" height="768" alt="Screenshot (30)" src="https://github.com/user-attachments/assets/1da5cd93-da8d-4ba7-b6d9-9dc6af4b0e83" />
+<img width="1366" height="768" alt="Screenshot (31)" src="https://github.com/user-attachments/assets/cfc6c25b-fc35-42b5-a37e-5d4e716e68d4" />
 
-### Frontend (`aurum-frontend/.env`)
+COLLECTION
+<img width="1366" height="768" alt="Screenshot (32)" src="https://github.com/user-attachments/assets/b8747d0a-96d6-4c6c-97d9-2cb4aa5b39f2" />
+<img width="1366" height="768" alt="Screenshot (33)" src="https://github.com/user-attachments/assets/458a540b-36a6-490c-be17-28ffd790b817" />
 
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+CART PAGE
+<img width="1366" height="768" alt="Screenshot (34)" src="https://github.com/user-attachments/assets/bab49d11-4054-4b8b-948e-fd1834d21d26" />
 
----
+ORDER PAGE
+<img width="1366" height="768" alt="Screenshot (35)" src="https://github.com/user-attachments/assets/145b1d66-5e66-46d4-86ad-6fccd6b704d8" />
 
 ## ✨ Features
 
