@@ -270,6 +270,16 @@ export const Layout = ({ children }) => {
                   }}
                 />
               </div>
+              {/* GitHub */}
+       <div> <a
+          href="https://github.com/laptopah16-art"
+          target="_blank"
+          rel="noreferrer"
+          className="hidden md:flex items-center justify-center w-10 h-10 rounded-sm border border-border/40 text-foreground/70 hover:text-neon-cyan hover:border-neon-cyan/50 hover:bg-neon-cyan/10 transition-all"
+          aria-label="GitHub"
+        >
+          <Github className="w-5 h-5" />
+        </a></div>
             </motion.div>
           )}
         </AnimatePresence>
